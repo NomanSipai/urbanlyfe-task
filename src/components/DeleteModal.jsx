@@ -2,15 +2,14 @@
 
 import React from "react";
 
-const DeleteModal = ({ isOpen, onClose, onConfirm }) => {
+const DeleteModal = ({ isOpen, onClose, onConfirm, loading }) => {
   if (!isOpen) return null;
 
   return (
     <div
       id="popup-modal"
       tabIndex={-1}
-      className="fixed inset-0 z-50 flex justify-center items-center w-full h-full bg-gray-800 bg-opacity-50"
-      onClick={onClose}>
+      className="fixed inset-0 z-50 flex justify-center items-center w-full h-full bg-gray-800 bg-opacity-50">
       <div className="relative p-4 w-full max-w-md max-h-full">
         <div className="relative bg-white rounded-lg shadow-sm">
           <button
@@ -53,8 +52,18 @@ const DeleteModal = ({ isOpen, onClose, onConfirm }) => {
             </h3>
             <button
               type="button"
-              className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center"
-              onClick={onConfirm}>
+              className="text-white justify-center bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center"
+              onClick={onConfirm}
+              disabled={loading}>
+              {loading && (
+                <img
+                  height={20}
+                  width={20}
+                  src="/loading.gif"
+                  alt="inputLoading-img"
+                  className="me-2"
+                />
+              )}
               Yes, I'm sure
             </button>
             <button

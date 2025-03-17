@@ -257,6 +257,8 @@ const Table = () => {
   const [totalUsers, setTotalUsers] = useState(0);
   const pageSize = 10;
   const [isDeleteModal, setIsDeleteModal] = useState(false);
+  const [deleteIndex, setDeleteIndex] = useState(false);
+  const [deleteLoading, setDeleteLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -303,9 +305,10 @@ const Table = () => {
   };
 
   const handleDeleteUser = async () => {
+    setDeleteLoading(true);
     try {
       const res = await axios.delete(
-        `https://dummyjson.com/users/${isDeleteModal}`
+        `https://dummyjson.com/users/${deleteIndex}`
       );
       if (res.status === 200) {
         toast.success("user deleted successfully");
@@ -315,6 +318,9 @@ const Table = () => {
       }
     } catch (error) {
       toast.error(error.message ?? "Error while deleting user");
+    } finally {
+      setDeleteLoading(false);
+      setIsDeleteModal(false);
     }
   };
 
@@ -330,7 +336,9 @@ const Table = () => {
         isOpen={isDeleteModal}
         onConfirm={handleDeleteUser}
         onClose={() => setIsDeleteModal(false)}
+        loading={deleteLoading}
       />
+
       <div className="mx-auto max-w-screen-xl px-4 lg:px-12">
         <div className="bg-white shadow-md sm:rounded-lg overflow-hidden px-2 py-2">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
@@ -445,7 +453,10 @@ const Table = () => {
                           />
                           <FaTrash
                             className="text-red-500 cursor-pointer"
-                            onClick={() => setIsDeleteModal(user.id)}
+                            onClick={() => {
+                              setIsDeleteModal(true);
+                              setDeleteIndex(user.id);
+                            }}
                           />
                         </td>
                       </tr>
