@@ -364,7 +364,7 @@ const Table = () => {
                 selected={startDate}
                 onChange={(date) => setStartDate(date)}
                 className="border p-3 rounded-lg shadow-md w-full sm:w-auto focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                placeholderText="Select a date"
+                placeholderText="Select a birth date"
                 dateFormat="yyyy-MM-dd"
                 isClearable
                 showYearDropdown
