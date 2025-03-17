@@ -8,6 +8,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import DeleteModal from "../components/DeleteModal";
+import { AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineCalendar } from "react-icons/ai";
+import { AiOutlinePlus } from "react-icons/ai";
 
 const Table = () => {
   const [users, setUsers] = useState([]);
@@ -106,23 +109,30 @@ const Table = () => {
         <div className="bg-white shadow-md sm:rounded-lg overflow-hidden px-2 py-2">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
             <button
-              className="text-white bg-green-600 hover:bg-green-700 px-6 py-3 rounded-lg shadow-md w-full sm:w-auto"
+              className="flex items-center gap-2 text-white bg-green-600 hover:bg-green-700 px-6 py-3 rounded-lg shadow-md w-full sm:w-auto"
               onClick={() => navigate("/users/create")}>
+              <AiOutlinePlus className="w-5 h-5" />
               Add User
             </button>
 
-            <input
-              type="text"
-              className="border p-3 w-full sm:max-w-xs rounded-lg shadow-md"
-              placeholder="Search users..."
-              value={searchTerm}
-              onChange={(e) => {
-                setSearchTerm(e.target.value);
-                setCurrentPage(1);
-              }}
-            />
+            <div className="relative w-full sm:max-w-xs">
+              <AiOutlineSearch
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                size={20}
+              />
+              <input
+                type="text"
+                className="border p-3 pl-10 w-full rounded-lg shadow-md"
+                placeholder="Search users..."
+                value={searchTerm}
+                onChange={(e) => {
+                  setSearchTerm(e.target.value);
+                  setCurrentPage(1);
+                }}
+              />
+            </div>
 
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="flex flex-wrap gap-3 justify-center items-center">
               <DatePicker
                 selected={startDate}
                 onChange={(date) => setStartDate(date)}
@@ -133,6 +143,8 @@ const Table = () => {
                 showYearDropdown
                 showMonthDropdown
                 dropdownMode="select"
+                showIcon
+                icon={<AiOutlineCalendar />}
               />
             </div>
           </div>

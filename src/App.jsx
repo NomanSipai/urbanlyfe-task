@@ -3,6 +3,7 @@ import Table from "./pages/Table";
 import { Toaster } from "react-hot-toast";
 import CreateOrEditPage from "./pages/CreateOrEditUser";
 import ViewUser from "./pages/ViewUser";
+import "./App.css";
 
 const App = () => {
   return (
