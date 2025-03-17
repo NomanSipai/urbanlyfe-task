@@ -364,7 +364,7 @@ const Table = () => {
                 selected={startDate}
                 onChange={(date) => setStartDate(date)}
                 className="border p-3 rounded-lg shadow-md w-full sm:w-auto focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                placeholderText="Select a birth date"
+                placeholderText="Select a birthdate"
                 dateFormat="yyyy-MM-dd"
                 isClearable
                 showYearDropdown
@@ -406,61 +406,71 @@ const Table = () => {
                 </tr>
               </thead>
               <tbody>
-                {loading
-                  ? Array.from({ length: 10 }).map((_, index) => (
-                      <tr key={index} className="border-b">
-                        <td className="px-4 py-3">
-                          <Skeleton width={50} height={20} />
-                        </td>
-                        <td className="px-4 py-3">
-                          <Skeleton width={120} height={20} />
-                        </td>
-                        <td className="px-4 py-3">
-                          <Skeleton width={120} height={20} />
-                        </td>
-                        <td className="px-4 py-3">
-                          <Skeleton width={150} height={20} />
-                        </td>
-                        <td className="px-4 py-3">
-                          <Skeleton width={80} height={20} />
-                        </td>
-                        <td className="px-4 py-3">
-                          <Skeleton width={120} height={20} />
-                        </td>
-                        <td className="px-4 py-3 text-center flex justify-center gap-3">
-                          <Skeleton circle width={20} height={20} />
-                          <Skeleton circle width={20} height={20} />
-                          <Skeleton circle width={20} height={20} />
-                        </td>
-                      </tr>
-                    ))
-                  : users.map((user) => (
-                      <tr key={user.id} className="border-b">
-                        <td className="px-4 py-3">{user.id}</td>
-                        <td className="px-4 py-3">{user.firstName}</td>
-                        <td className="px-4 py-3">{user.lastName}</td>
-                        <td className="px-4 py-3">{user.email}</td>
-                        <td className="px-4 py-3">{user.gender}</td>
-                        <td className="px-4 py-3">{user.birthDate}</td>
-                        <td className="px-4 py-3 flex justify-center gap-3">
-                          <FaEye
-                            className="text-blue-500 cursor-pointer"
-                            onClick={() => navigate(`/users/view/${user.id}`)}
-                          />
-                          <FaEdit
-                            className="text-yellow-500 cursor-pointer"
-                            onClick={() => navigate(`/users/edit/${user.id}`)}
-                          />
-                          <FaTrash
-                            className="text-red-500 cursor-pointer"
-                            onClick={() => {
-                              setIsDeleteModal(true);
-                              setDeleteIndex(user.id);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    ))}
+                {loading ? (
+                  Array.from({ length: 10 }).map((_, index) => (
+                    <tr key={index} className="border-b">
+                      <td className="px-4 py-3">
+                        <Skeleton width={50} height={20} />
+                      </td>
+                      <td className="px-4 py-3">
+                        <Skeleton width={120} height={20} />
+                      </td>
+                      <td className="px-4 py-3">
+                        <Skeleton width={120} height={20} />
+                      </td>
+                      <td className="px-4 py-3">
+                        <Skeleton width={150} height={20} />
+                      </td>
+                      <td className="px-4 py-3">
+                        <Skeleton width={80} height={20} />
+                      </td>
+                      <td className="px-4 py-3">
+                        <Skeleton width={120} height={20} />
+                      </td>
+                      <td className="px-4 py-3 text-center flex justify-center gap-3">
+                        <Skeleton circle width={20} height={20} />
+                        <Skeleton circle width={20} height={20} />
+                        <Skeleton circle width={20} height={20} />
+                      </td>
+                    </tr>
+                  ))
+                ) : users.length > 0 ? (
+                  users.map((user) => (
+                    <tr key={user.id} className="border-b">
+                      <td className="px-4 py-3">{user.id}</td>
+                      <td className="px-4 py-3">{user.firstName}</td>
+                      <td className="px-4 py-3">{user.lastName}</td>
+                      <td className="px-4 py-3">{user.email}</td>
+                      <td className="px-4 py-3">{user.gender}</td>
+                      <td className="px-4 py-3">{user.birthDate}</td>
+                      <td className="px-4 py-3 flex justify-center gap-3">
+                        <FaEye
+                          className="text-blue-500 cursor-pointer"
+                          onClick={() => navigate(`/users/view/${user.id}`)}
+                        />
+                        <FaEdit
+                          className="text-yellow-500 cursor-pointer"
+                          onClick={() => navigate(`/users/edit/${user.id}`)}
+                        />
+                        <FaTrash
+                          className="text-red-500 cursor-pointer"
+                          onClick={() => {
+                            setIsDeleteModal(true);
+                            setDeleteIndex(user.id);
+                          }}
+                        />
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td
+                      colSpan="7"
+                      className="px-4 py-6 text-center text-gray-500">
+                      No record found.
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>
