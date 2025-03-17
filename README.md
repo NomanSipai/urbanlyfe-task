@@ -1,12 +1,49 @@
-# React + Vite
+# User Management Table
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a user management system built with Vite and React, allowing users to view, add, edit, and delete user records. The project includes filtering, pagination, and search functionality.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- List users with pagination
+- Search users by name
+- Filter users by gender using tabs
+- Add, edit, and delete users
+- Date filtering using a date picker
+- Responsive design
 
-## Expanding the ESLint configuration
+## Setup Instructions
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+
+- Node.js installed
+- npm or yarn installed
+
+### Installation
+
+1. Clone the repository:
+   git clone https://github.com/NomanSipai/urbanlyfe-task.git
+   cd urbanlyfe-task
+
+2. Install dependencies:
+   npm install
+
+3. Start the development server:
+   npm run dev
+
+### Build for Production
+
+To create a production build, run:
+
+npm run build
+
+### API Information
+
+This project uses the [DummyJSON API](https://dummyjson.com/docs/users) for user data.
+
+**Note:** The APIs for adding, deleting, and updating users do not change the server data as mentioned in the documentation. This is only for demo purposes.
+
+[API Documentation](https://dummyjson.com/docs/users#users-delete)
+
+## License
+
+This project is open-source and available under the MIT License.
