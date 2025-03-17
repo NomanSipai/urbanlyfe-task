@@ -325,7 +325,7 @@ const Table = () => {
   const totalPages = Math.ceil(totalUsers / pageSize);
 
   return (
-    <section className="bg-gray-50 p-3 sm:p-5">
+    <section className="bg-gray-50 container mx-auto p-3 sm:p-5">
       <DeleteModal
         isOpen={isDeleteModal}
         onConfirm={handleDeleteUser}

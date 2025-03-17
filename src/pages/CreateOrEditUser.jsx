@@ -66,7 +66,7 @@ const CreateOrEditPage = () => {
   };
 
   return (
-    <div className="max-w-lg mx-auto py-5">
+    <div className="max-w-lg mx-auto py-5 px-4 container">
       <button
         onClick={() => navigate(-1)}
         className="mb-6 px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600">

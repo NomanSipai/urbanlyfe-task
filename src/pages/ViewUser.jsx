@@ -43,7 +43,7 @@ const ViewUser = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto py-5">
+    <div className="max-w-2xl container px-4 mx-auto py-5">
       <button
         onClick={() => navigate(-1)}
         className="mb-6 px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600">
