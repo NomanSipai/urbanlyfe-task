@@ -332,7 +332,7 @@ const Table = () => {
         onClose={() => setIsDeleteModal(false)}
       />
       <div className="mx-auto max-w-screen-xl px-4 lg:px-12">
-        <div className="bg-white shadow-md sm:rounded-lg overflow-hidden">
+        <div className="bg-white shadow-md sm:rounded-lg overflow-hidden px-2 py-2">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
             <button
               className="text-white bg-green-600 hover:bg-green-700 px-6 py-3 rounded-lg shadow-md w-full sm:w-auto"
